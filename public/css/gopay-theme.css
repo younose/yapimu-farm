@@ -759,6 +759,36 @@ body {
     .gopay-bottom-nav-item.is-active .gopay-bottom-nav-label {
         color: var(--primary);
     }
+
+    .gopay-bottom-nav-item.dropup {
+        flex: 1;
+        min-width: 0;
+        padding: 0;
+    }
+
+    .gopay-bottom-nav-account {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 6px 2px;
+        text-decoration: none;
+        width: 100%;
+    }
+
+    .gopay-bottom-nav-avatar {
+        background: #eef2f6;
+        overflow: hidden;
+        border: 2px solid #eef2f6;
+    }
+
+    .gopay-bottom-nav-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+    }
 }
 
 /* PWA install button */
@@ -854,6 +884,63 @@ body {
 
 body.has-bottom-nav .pwa-install-btn {
     bottom: 92px;
+}
+
+/* Mobile sign-in: clean, minimal form */
+.gopay-login-mobile {
+    min-height: 100vh;
+    background: #fff;
+}
+
+.gopay-login-clean {
+    padding: 24px 28px;
+    width: 100%;
+}
+
+.gopay-login-clean-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    color: #1d2939;
+    margin-bottom: 40px;
+}
+
+.gopay-login-clean-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f2f4f7;
+    border-radius: 10px;
+    padding: 4px 14px;
+}
+
+.gopay-login-clean-field i {
+    color: #98a2b3;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.gopay-login-clean-input {
+    flex: 1;
+    min-width: 0;
+    border: 0 !important;
+    background: transparent !important;
+    padding: 11px 0 !important;
+    box-shadow: none !important;
+    font-size: 14px;
+}
+
+.gopay-login-clean-toggle {
+    color: var(--slate);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.gopay-login-clean-btn {
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 700;
 }
 
 @media (min-width: 768px) {

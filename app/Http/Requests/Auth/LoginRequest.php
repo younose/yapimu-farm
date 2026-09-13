@@ -43,7 +43,6 @@ class LoginRequest extends FormRequest
 
         $email = $this->string('email');
         $password = $this->string('password');
-        $remember = $this->boolean('remember');
 
         //    login by username or email
         if (Str::contains($email, '@')) {
@@ -52,7 +51,9 @@ class LoginRequest extends FormRequest
             $credentials = ['username' => $email, 'password' => $password];
         }
 
-        if (! Auth::attempt($credentials, $remember)) {
+        // Always keep the user signed in (remember cookie) so they don't have
+        // to log in again until they explicitly log out.
+        if (! Auth::attempt($credentials, true)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([

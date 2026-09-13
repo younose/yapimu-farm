@@ -29,4 +29,29 @@
             <span class="gopay-bottom-nav-label">{{ $item->name }}</span>
         </a>
     @endforeach
+
+    <div class="dropup gopay-bottom-nav-item">
+        <a href="javascript:void(0)" class="gopay-bottom-nav-account" data-bs-toggle="dropdown" aria-expanded="false"
+            aria-label="Akun">
+            <span class="gopay-bottom-nav-icon gopay-bottom-nav-avatar">
+                <img src="{{ auth()->user()->photo_url }}" alt=""
+                    onerror="this.onerror=null;this.src='{{ asset('images/avatar/1.png') }}'">
+            </span>
+            <span class="gopay-bottom-nav-label">Akun</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+                <a href="{{ route('profile.edit') }}" class="dropdown-item ai-icon">
+                    <i class="fa-solid fa-user text-primary fa-fw"></i>
+                    <span class="ms-2">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('logout') }}" class="dropdown-item ai-icon">
+                    <i class="fa-solid fa-arrow-right-from-bracket text-danger fa-fw"></i>
+                    <span class="ms-2">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
