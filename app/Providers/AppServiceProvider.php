@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Activitylog\Models\Activity;
 
 class AppServiceProvider extends ServiceProvider
 {
+    const ACTIVITY_LOG_LIMIT = 300;
+
     /**
      * Register any application services.
      */
@@ -22,6 +25,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Activity::created(function () {
+            $excess = Activity::count() - self::ACTIVITY_LOG_LIMIT;
+
+            if ($excess > 0) {
+                Activity::oldest('id')->limit($excess)->delete();
+            }
+        });
+
         // Cache::forget('settings');
         // cchek if connected to database
         if (!DB::connection()->getPdo()) {
