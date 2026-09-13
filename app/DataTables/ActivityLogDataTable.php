@@ -37,6 +37,9 @@ class ActivityLogDataTable extends DataTable
             ->editColumn('created_at', function ($data) {
                 return $data->created_at->format('d M Y H:i:s');
             })
+            ->editColumn('description', function ($data) {
+                return $data->description ?? '-';
+            })
             ->rawColumns(['action', 'event'])
             ->setRowId('id');
     }
@@ -85,6 +88,9 @@ class ActivityLogDataTable extends DataTable
             Column::make('event')
                 ->title('Event')
                 ->addClass('my-auto'),
+            Column::make('description')
+                ->title('Keterangan')
+                ->addClass('my-auto'),
         ];
     }
 
@@ -108,6 +114,24 @@ class ActivityLogDataTable extends DataTable
                 'bg' => 'bg-danger',
                 'color' => 'text-white',
                 'icon' => 'fas fa-trash fa-fw',
+            ],
+            'login' => (object) [
+                'label' => 'LOGIN',
+                'bg' => 'bg-info',
+                'color' => 'text-white',
+                'icon' => 'fas fa-right-to-bracket fa-fw',
+            ],
+            'logout' => (object) [
+                'label' => 'LOGOUT',
+                'bg' => 'bg-secondary',
+                'color' => 'text-white',
+                'icon' => 'fas fa-right-from-bracket fa-fw',
+            ],
+            'visit' => (object) [
+                'label' => 'KUNJUNGAN',
+                'bg' => 'bg-warning',
+                'color' => 'text-dark',
+                'icon' => 'fas fa-eye fa-fw',
             ],
         ];
     }

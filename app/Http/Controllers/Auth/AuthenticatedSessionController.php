@@ -29,6 +29,17 @@ class AuthenticatedSessionController extends Controller
 
             $request->session()->regenerate();
 
+            $user = Auth::user();
+
+            activity('Login')
+                ->causedBy($user)
+                ->withProperties([
+                    'ip' => $request->ip(),
+                    'user_agent' => $request->userAgent(),
+                ])
+                ->event('login')
+                ->log($user->name.' login ke sistem');
+
             return redirect()->intended(route('dashboard', absolute: false));
         } catch (\Throwable $th) {
             if (request()->wantsJson() || $request->expectsJson()) {
@@ -46,6 +57,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        $user = Auth::user();
+
+        if ($user) {
+            activity('Login')
+                ->causedBy($user)
+                ->withProperties([
+                    'ip' => $request->ip(),
+                    'user_agent' => $request->userAgent(),
+                ])
+                ->event('logout')
+                ->log($user->name.' logout dari sistem');
+        }
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

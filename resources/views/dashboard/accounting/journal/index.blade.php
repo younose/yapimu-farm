@@ -256,6 +256,21 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Bukti -->
+    <div class="modal fade" id="proofModal" tabindex="-1" aria-labelledby="proofModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="proofModalLabel">Bukti Transaksi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="" alt="Bukti Transaksi" class="img-fluid" id="proofModalImage">
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('js')
@@ -339,6 +354,11 @@
             $('#formModal').modal('hide');
         }
 
+        function showProof(url) {
+            $('#proofModalImage').attr('src', url);
+            $('#proofModal').modal('show');
+        }
+
         function openAddModel() {
             const method = 'post';
             const action = route('journals.store');
@@ -393,7 +413,7 @@
                         const proofUrl = response.data.proof_url;
                         if (proofUrl) {
                             $(`[name="proof"]`).after(
-                                `<a href="${proofUrl}" target="_blank" class="journal-proof d-block mt-2">Lihat Bukti Transaksi <i class="fas fa-external-link-alt"></i></a>`
+                                `<button type="button" onclick="showProof('${proofUrl}')" class="journal-proof btn btn-link p-0 d-block mt-2">Lihat Bukti Transaksi <i class="fas fa-image"></i></button>`
                             );
                         }
 

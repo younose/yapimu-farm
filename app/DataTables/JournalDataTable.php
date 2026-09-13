@@ -48,7 +48,7 @@ class JournalDataTable extends DataTable
             })
         // bukti
             ->editColumn('proof', function ($journal) {
-                return $journal->proof_url ? '<a class="btn btn-warning btn-xs" href="'.$journal->proof_url.'" target="_blank"><i class="fas fa-external-link-alt fa-fw"></i> Lihat</a>' : '-';
+                return $journal->proof_url ? '<button type="button" class="btn btn-warning btn-xs" onclick="showProof(\''.$journal->proof_url.'\')"><i class="fas fa-image fa-fw"></i> Lihat</button>' : '-';
             })
         // ->editColumn('balance', function ($journal) use (&$journalDebit, &$journalCredit, &$journalBalance) {
         //     $journalDebit += $journal->debit;
