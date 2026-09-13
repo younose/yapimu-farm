@@ -21,3 +21,4 @@ yarn-error.log
 siayambaru.zip
 *.zip
 ayam.mamu.sch.id.zip
+/deploy.sh
