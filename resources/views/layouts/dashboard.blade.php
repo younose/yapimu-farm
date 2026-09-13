@@ -153,8 +153,16 @@
     @endauth
 
     <div id="pwa-install-btn" class="pwa-install-btn">
-        <i class="fa-solid fa-arrow-down-to-line"></i>
-        <span>Install Aplikasi {{ config('app.name') }}</span>
+        <div class="pwa-install-icon">
+            <img src="{{ Storage::url(config('app.logo')) }}" alt=""
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <i class="fa-solid fa-mobile-screen-button pwa-install-icon-fallback"></i>
+        </div>
+        <div class="pwa-install-text">
+            <div class="pwa-install-title">Pasang {{ config('app.name') }}</div>
+            <div class="pwa-install-desc">Akses lebih cepat dari layar utama, tanpa membuka browser.</div>
+        </div>
+        <button type="button" id="pwa-install-action" class="pwa-install-action">Pasang</button>
         <button type="button" id="pwa-install-close" class="pwa-install-close">&times;</button>
     </div>
 

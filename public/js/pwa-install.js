@@ -49,17 +49,21 @@
             return;
         }
 
-        btn.addEventListener('click', function () {
-            if (!deferredPrompt) {
-                return;
-            }
+        const actionBtn = document.getElementById('pwa-install-action');
 
-            hideButton();
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.finally(function () {
-                deferredPrompt = null;
+        if (actionBtn) {
+            actionBtn.addEventListener('click', function () {
+                if (!deferredPrompt) {
+                    return;
+                }
+
+                hideButton();
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.finally(function () {
+                    deferredPrompt = null;
+                });
             });
-        });
+        }
 
         const closeBtn = document.getElementById('pwa-install-close');
 
