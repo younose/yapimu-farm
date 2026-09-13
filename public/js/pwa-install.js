@@ -15,10 +15,14 @@
         return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
     }
 
+    function isInstalled() {
+        return isStandalone() || localStorage.getItem('pwaInstalled') === '1';
+    }
+
     function showButton() {
         const btn = getButton();
 
-        if (btn && !isStandalone() && !sessionStorage.getItem('pwaInstallDismissed')) {
+        if (btn && !isInstalled() && !sessionStorage.getItem('pwaInstallDismissed')) {
             btn.classList.add('show');
         }
     }
@@ -31,6 +35,12 @@
         }
     }
 
+    // Already running as the installed app (or installed previously on this
+    // device/browser) — never show the install banner again.
+    if (isInstalled()) {
+        hideButton();
+    }
+
     window.addEventListener('beforeinstallprompt', function (e) {
         e.preventDefault();
         deferredPrompt = e;
@@ -39,6 +49,7 @@
 
     window.addEventListener('appinstalled', function () {
         deferredPrompt = null;
+        localStorage.setItem('pwaInstalled', '1');
         hideButton();
     });
 

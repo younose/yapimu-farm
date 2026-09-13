@@ -17,6 +17,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
 <script src="{{asset('/js/helper.js')}}"></script>
-<script src="{{ asset('/js/pwa-install.js') }}"></script>
+<script src="{{ asset('/js/pwa-install.js') }}?v={{ filemtime(public_path('js/pwa-install.js')) }}"></script>
 
 @stack('js')

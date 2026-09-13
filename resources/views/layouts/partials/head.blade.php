@@ -33,7 +33,7 @@
    <link href="{{ asset('/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css">
-   <link href="{{ asset('/css/gopay-theme.css') }}" rel="stylesheet">
+   <link href="{{ asset('/css/gopay-theme.css') }}?v={{ filemtime(public_path('css/gopay-theme.css')) }}" rel="stylesheet">
    <style>
        .dataTables_wrapper .dataTables_paginate .paginate_button.previous,
        .dataTables_wrapper .dataTables_paginate .paginate_button.next {
