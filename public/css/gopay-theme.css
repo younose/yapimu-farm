@@ -1,0 +1,910 @@
+/*
+ * Custom palette theme override (colorhunt.co/palette/2f39a92e6fa049a4bb15d8b3).
+ *   --navy #2f39a9   --slate #2e6fa0   --teal #49a4bb   --accent #15d8b3
+ * Loaded after style.css — only redefines CSS custom properties and a few
+ * component rules so every existing page (sidebar, buttons, badges, icons)
+ * picks up the new color automatically without touching each view.
+ */
+
+:root {
+    --navy: #2f39a9;
+    --navy-deep: #14184a;
+    --slate: #2e6fa0;
+    --teal: #49a4bb;
+    --accent: #15d8b3;
+
+    --primary: var(--slate);
+    --primary-hover: var(--navy);
+    --primary-dark: var(--navy);
+    --secondary: var(--teal);
+    --bs-primary: var(--slate);
+    --bs-primary-rgb: 46, 111, 160;
+    --rgba-primary-1: rgba(46, 111, 160, 0.1);
+    --rgba-primary-2: rgba(46, 111, 160, 0.2);
+    --rgba-primary-3: rgba(46, 111, 160, 0.3);
+    --rgba-primary-4: rgba(46, 111, 160, 0.4);
+    --rgba-primary-5: rgba(46, 111, 160, 0.5);
+    --rgba-primary-6: rgba(46, 111, 160, 0.6);
+    --rgba-primary-7: rgba(46, 111, 160, 0.7);
+    --rgba-primary-8: rgba(46, 111, 160, 0.8);
+    --rgba-primary-9: rgba(46, 111, 160, 0.9);
+    --bs-body-bg: #eef2f6;
+}
+
+body {
+    background-color: var(--bs-body-bg);
+}
+
+/* Primary buttons get a dark background now, so force readable white text */
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-color: #fff;
+    --bs-btn-disabled-color: #fff;
+    color: #fff;
+}
+
+/* Softer, flatter GoPay-style cards everywhere */
+.card,
+.widget-stat.card {
+    border: 0;
+    border-radius: 20px;
+    box-shadow: 0 2px 16px rgba(16, 24, 40, 0.06);
+}
+
+.card .card-header {
+    border-bottom: 0;
+    background: transparent;
+}
+
+.btn,
+.btn-primary,
+.badge {
+    border-radius: 12px;
+}
+
+.badge {
+    padding: 0.4em 0.8em;
+}
+
+/* Wallet-app style hero: full-width blue block, curved only at the bottom */
+.gopay-hero {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    border-radius: 0 0 36px 36px;
+    padding: 22px 22px 28px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(20, 24, 74, 0.35);
+    position: relative;
+    overflow: hidden;
+    min-height: 260px;
+    box-sizing: border-box;
+}
+
+.gopay-hero::after {
+    content: "";
+    position: absolute;
+    right: -40px;
+    top: -60px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(21, 216, 179, 0.18);
+}
+
+.gopay-hero-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 22px;
+}
+
+.gopay-hero-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gopay-hero-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.gopay-hero-period-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.gopay-hero-icon-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-size: 17px;
+    flex-shrink: 0;
+    border: none;
+}
+
+.gopay-hero-action-btn {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-top: auto;
+}
+
+.gopay-hero-action-btn:hover,
+.gopay-hero-action-btn:active {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.gopay-hero-welcome {
+    font-size: 12px;
+    opacity: 0.85;
+    line-height: 1.2;
+}
+
+.gopay-hero-name {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.gopay-hero-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gopay-icon-btn-wrap {
+    position: relative;
+}
+
+.gopay-icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.gopay-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.gopay-icon-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: var(--accent);
+    color: #1a1a1a;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+}
+
+.gopay-notif-dropdown {
+    position: absolute;
+    top: 46px;
+    right: 0;
+    width: 280px;
+    max-height: 320px;
+    overflow-y: auto;
+    background: #fff;
+    color: #344054;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(16, 24, 40, 0.18);
+    z-index: 1050;
+    padding: 8px;
+    display: none;
+}
+
+.gopay-notif-dropdown.show {
+    display: block;
+}
+
+.gopay-notif-item {
+    display: flex;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.gopay-notif-item:hover {
+    background: #f4f6f8;
+}
+
+.gopay-notif-item .gopay-notif-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--rgba-primary-1);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 13px;
+}
+
+.gopay-notif-item .gopay-notif-message {
+    font-size: 12.5px;
+    line-height: 1.3;
+    margin-bottom: 2px;
+}
+
+.gopay-notif-item .gopay-notif-time {
+    font-size: 11px;
+    color: #98a2b3;
+}
+
+.gopay-notif-empty {
+    text-align: center;
+    color: #98a2b3;
+    font-size: 12.5px;
+    padding: 20px 8px;
+}
+
+.gopay-hero-label {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+}
+
+.gopay-hero-value {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Compact hero variant (e.g. Catatan Keuangan period picker) */
+.gopay-hero-compact {
+    padding-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.gopay-hero-compact .gopay-hero-value {
+    margin-bottom: 20px;
+}
+
+.gopay-hero-compact .gopay-hero-stats {
+    margin-bottom: 18px;
+}
+
+.gopay-hero-compact .gopay-hero-period-picker {
+    margin-top: 4px;
+}
+
+.gopay-hero-compact .gopay-hero-action-btn {
+    margin-top: 4px;
+}
+
+.gopay-hero-period-picker {
+    position: relative;
+    z-index: 1;
+}
+
+.gopay-hero-period-picker .ts-wrapper {
+    width: 100%;
+}
+
+.gopay-hero-period-picker .ts-control {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border: none !important;
+    border-radius: 999px !important;
+    color: #fff !important;
+    padding: 10px 16px !important;
+    box-shadow: none !important;
+}
+
+.gopay-hero-period-picker .ts-control input,
+.gopay-hero-period-picker .ts-control .item {
+    color: #fff !important;
+}
+
+.gopay-hero-period-picker .ts-control input::placeholder {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.gopay-hero-period-picker .ts-dropdown {
+    color: #1d2939;
+}
+
+.gopay-hero-value-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.gopay-eye-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.gopay-eye-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.gopay-hero-stats {
+    display: flex;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.gopay-hero-stat {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    padding: 10px 12px;
+    min-width: 0;
+}
+
+.gopay-hero-stat > div {
+    min-width: 0;
+}
+
+.gopay-hero-stat-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.gopay-hero-stat-label {
+    font-size: 10.5px;
+    opacity: 0.8;
+    white-space: nowrap;
+}
+
+.gopay-hero-stat-value {
+    font-size: 13px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gopay-live-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 6px;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #ff5c5c;
+    vertical-align: middle;
+}
+
+.gopay-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ff3b3b;
+    box-shadow: 0 0 0 rgba(255, 59, 59, 0.6);
+    animation: gopay-live-pulse 1.4s infinite;
+}
+
+@keyframes gopay-live-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(255, 59, 59, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 59, 59, 0);
+    }
+}
+
+/* slow "still processing" blink for in-progress rows (e.g. current open period) */
+.is-processing {
+    animation: gopay-processing-blink 2.2s ease-in-out infinite;
+}
+
+@keyframes gopay-processing-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* Period search modal results */
+.period-search-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #f8f9fb;
+    margin-bottom: 8px;
+}
+
+.period-search-result-name {
+    font-weight: 600;
+    font-size: 13.5px;
+}
+
+.period-search-result-meta {
+    font-size: 12px;
+    color: #667085;
+}
+
+/* Dividend history — wallet-app style list rows */
+.dividend-list-table thead {
+    display: none;
+}
+
+.dividend-list-table,
+.dividend-list-table tbody,
+.dividend-list-table tr,
+.dividend-list-table td {
+    border: none !important;
+}
+
+.dividend-list-table tbody tr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dividend-list-table tbody tr:not(:last-child) {
+    border-bottom: 1px solid #f0f2f5 !important;
+}
+
+.dividend-list-table tbody td {
+    padding: 12px 4px;
+    vertical-align: middle;
+}
+
+.dividend-row-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.dividend-row-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.dividend-row-name {
+    font-weight: 600;
+    font-size: 13.5px;
+    color: #1d2939;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dividend-row-sub {
+    font-size: 11.5px;
+    color: #98a2b3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dividend-row-right {
+    text-align: right;
+    flex-shrink: 0;
+    padding-left: 10px;
+}
+
+.dividend-row-amount {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1d2939;
+    white-space: nowrap;
+}
+
+.dividend-row-status {
+    font-size: 11.5px;
+    font-weight: 600;
+}
+
+.dividend-row-status.is-up {
+    color: #0f9d78;
+}
+
+.dividend-row-status.is-down {
+    color: #e13232;
+}
+
+.dividend-row-status.is-neutral {
+    color: #98a2b3;
+}
+
+/* Forum chat page */
+.forum-card {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 220px);
+    min-height: 420px;
+}
+
+.forum-card .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.forum-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.forum-bubble-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    max-width: 100%;
+}
+
+.forum-bubble-row.is-me {
+    justify-content: flex-end;
+}
+
+.forum-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.forum-bubble {
+    max-width: 75%;
+    background: #f1f3f6;
+    color: #1d2939;
+    padding: 10px 14px;
+    border-radius: 16px 16px 16px 4px;
+}
+
+.forum-bubble-row.is-me .forum-bubble {
+    background: var(--primary);
+    color: #fff;
+    border-radius: 16px 16px 4px 16px;
+}
+
+.forum-bubble-name {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 2px;
+}
+
+.forum-bubble-text {
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.forum-bubble-time {
+    font-size: 10px;
+    opacity: 0.65;
+    margin-top: 4px;
+    text-align: right;
+}
+
+.forum-input-bar {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid #eef0f3;
+}
+
+.forum-send-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+/* Mobile bottom tab bar (investor) */
+.gopay-bottom-nav {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    body.has-bottom-nav {
+        padding-bottom: 80px;
+    }
+
+    body.has-bottom-nav #main-wrapper .footer {
+        display: none;
+    }
+
+    .gopay-bottom-nav {
+        display: flex;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1030;
+        background: #fff;
+        padding: 8px 4px calc(6px + env(safe-area-inset-bottom));
+        box-shadow: 0 -4px 16px rgba(16, 24, 40, 0.1);
+        border-radius: 20px 20px 0 0;
+    }
+
+    .gopay-bottom-nav-item {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 6px 2px;
+        text-decoration: none;
+    }
+
+    .gopay-bottom-nav-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 19px;
+        transition: border-radius 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+    }
+
+    .gopay-bottom-nav-label {
+        font-size: 9.5px;
+        font-weight: 600;
+        color: #667085;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 100%;
+    }
+
+    .gopay-bottom-nav-item.is-active .gopay-bottom-nav-icon {
+        border-radius: 50%;
+        transform: translateY(-6px) scale(1.12);
+        box-shadow: 0 0 0 3px #fff, 0 0 0 4px rgba(0, 0, 0, 0.06), 0 8px 16px rgba(16, 24, 40, 0.3);
+    }
+
+    .gopay-bottom-nav-item.is-active .gopay-bottom-nav-label {
+        color: var(--primary);
+    }
+}
+
+/* PWA install button */
+.pwa-install-btn {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 20px;
+    z-index: 1040;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 16px;
+    padding: 12px 14px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+.pwa-install-btn.show {
+    display: flex;
+}
+
+.pwa-install-btn i {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.pwa-install-btn span {
+    flex: 1;
+}
+
+.pwa-install-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: 0;
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+body.has-bottom-nav .pwa-install-btn {
+    bottom: 92px;
+}
+
+@media (min-width: 768px) {
+    .pwa-install-btn {
+        left: auto;
+        width: 320px;
+    }
+}
+
+/* Mobile investor home: drop the top bar (hamburger + dark mode toggle) and let the hero go edge-to-edge */
+@media (max-width: 767.98px) {
+    body.is-wallet-home .nav-header,
+    body.is-wallet-home .header,
+    body.is-wallet-home .page-titles,
+    body.is-wallet-home .gopay-mobile-hide,
+    body.is-wallet-home .dataTables_length,
+    body.is-wallet-home .dataTables_filter,
+    body.is-wallet-home .dataTables_info,
+    body.is-wallet-home .dataTables_paginate {
+        display: none;
+    }
+
+    body.is-wallet-home .content-body {
+        padding-top: 0 !important;
+    }
+
+    body.is-wallet-home .container-fluid {
+        padding-top: 0;
+    }
+
+    body.is-wallet-home .gopay-hero-row {
+        position: relative;
+        left: 50%;
+        right: 50%;
+        width: 100vw;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        z-index: 2;
+    }
+
+    body.is-wallet-home .gopay-hero-row > [class*="col-"] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    body.is-wallet-home .gopay-hero {
+        border-radius: 0 0 36px 36px;
+    }
+
+    body.is-wallet-home,
+    body.is-wallet-home #main-wrapper,
+    body.is-wallet-home .content-body {
+        background-color: #fff !important;
+    }
+
+    /* let the white cards below the hero span edge-to-edge too */
+    body.is-wallet-home .gopay-fullbleed-row {
+        position: relative;
+        left: 50%;
+        right: 50%;
+        width: 100vw;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+
+    body.is-wallet-home .gopay-fullbleed-row > [class*="col-"] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    body.is-wallet-home .gopay-fullbleed-row .card {
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 8px solid #f4f6f8;
+    }
+
+    body.is-wallet-home .gopay-fullbleed-row .card-header,
+    body.is-wallet-home .gopay-fullbleed-row .card-body {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* pull Riwayat Pembagian Dividen up closer to the hero, with extra breathing room inside */
+    body.is-wallet-home .gopay-dividend-row {
+        position: relative;
+        z-index: 0;
+        margin-top: -18px;
+    }
+
+    body.is-wallet-home .gopay-dividend-row .card-header {
+        padding-top: 2rem;
+        padding-bottom: 0.25rem;
+        border-bottom: 0;
+    }
+
+    body.is-wallet-home .gopay-dividend-row .card-body {
+        padding-top: 0.5rem;
+    }
+}
+
